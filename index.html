@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Happy Birthday, Sutapa ✨</title>
+
+  <!-- Nice link preview when shared on WhatsApp / Instagram / iMessage -->
+  <meta name="description" content="A little birthday surprise made just for Sutapa ✨" />
+  <meta property="og:title" content="Happy Birthday, Sutapa ✨" />
+  <meta property="og:description" content="Tap to unwrap your birthday wish 🎂" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#120d1d" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Background Starfield & Confetti Canvas -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- Ambient Glow Orbs -->
+  <div class="ambient-glow glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow glow-2" aria-hidden="true"></div>
+
+  <!-- Preview mode badge (only shown when ?preview=1 is in URL) -->
+  <div id="preview-badge" class="preview-badge hidden">
+    Preview mode • Visit notifications paused
+  </div>
+
+  <!-- Sound Toggle -->
+  <button
+    id="sound-toggle"
+    class="sound-toggle hidden"
+    type="button"
+    aria-label="Toggle birthday chime"
+    title="Toggle birthday music"
+  >
+    <span class="sound-icon" id="sound-icon">🎵</span>
+    <span class="sound-label" id="sound-label">Sound On</span>
+  </button>
+
+  <!-- ======================================================
+       STAGE 1: ENVELOPE INTRO GATE
+       ====================================================== -->
+  <section id="intro-stage" class="intro-stage">
+    <div class="intro-inner">
+      <p class="eyebrow fade-up">A Little Birthday Surprise</p>
+      <h1 class="intro-title fade-up delay-1">
+        For <span data-recipient>Sutapa</span>
+      </h1>
+      <p class="intro-sub fade-up delay-2" id="headline-subtext">
+        No big speeches. Just a tiny corner of the internet made to celebrate you today.
+      </p>
+
+      <div
+        id="envelope-btn"
+        class="envelope-wrapper fade-up delay-3"
+        role="button"
+        tabindex="0"
+        aria-label="Open birthday surprise"
+      >
+        <div class="envelope" id="envelope">
+          <div class="envelope-back"></div>
+          <div class="envelope-letter-preview">
+            <span>Happy Birthday ✨</span>
+          </div>
+          <div class="envelope-front"></div>
+          <div class="envelope-flap"></div>
+          <div class="wax-seal">
+            <span>S</span>
+          </div>
+        </div>
+        <span class="tap-hint">Tap the seal to unwrap ✨</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       STAGE 2+: MAIN BIRTHDAY EXPERIENCE
+       ====================================================== -->
+  <main id="main-experience" class="main-experience hidden">
+    <!-- Hero Greeting -->
+    <header class="hero-section reveal">
+      <div class="pill-badge">✨ Today is all about you</div>
+      <h2 class="hero-heading">
+        Happy Birthday, <span class="gradient-text" data-recipient>Sutapa</span>
+      </h2>
+      <p class="hero-copy">
+        Scroll slowly, make a wish, and take a moment to smile.
+      </p>
+      <div class="scroll-cue" aria-hidden="true">
+        <span></span>
+      </div>
+    </header>
+
+    <!-- Interactive Cake & Candles -->
+    <section class="cake-section reveal" id="cake-section">
+      <div class="glass-panel cake-panel">
+        <p class="section-tag">Make a Wish</p>
+        <h3 class="section-title" id="wish-title">Tap the candles to blow them out</h3>
+        <p class="section-subtitle" id="wish-subtitle">
+          Close your eyes for a second and wish for something wonderful.
+        </p>
+
+        <div class="cake-stage" id="cake-stage">
+          <div class="candles-row" id="candles-row">
+            <button class="candle" type="button" data-candle="0" aria-label="Candle 1">
+              <span class="flame"><span class="flame-inner"></span></span>
+              <span class="smoke"></span>
+              <span class="wick"></span>
+              <span class="wax-body c1"></span>
+            </button>
+            <button class="candle" type="button" data-candle="1" aria-label="Candle 2">
+              <span class="flame"><span class="flame-inner"></span></span>
+              <span class="smoke"></span>
+              <span class="wick"></span>
+              <span class="wax-body c2"></span>
+            </button>
+            <button class="candle" type="button" data-candle="2" aria-label="Candle 3">
+              <span class="flame"><span class="flame-inner"></span></span>
+              <span class="smoke"></span>
+              <span class="wick"></span>
+              <span class="wax-body c3"></span>
+            </button>
+          </div>
+
+          <div class="cake-art">
+            <div class="cake-top-icing">
+              <span class="drip d1"></span>
+              <span class="drip d2"></span>
+              <span class="drip d3"></span>
+              <span class="drip d4"></span>
+              <span class="drip d5"></span>
+            </div>
+            <div class="cake-tier-top">
+              <span class="sprinkle s1"></span>
+              <span class="sprinkle s2"></span>
+              <span class="sprinkle s3"></span>
+              <span class="sprinkle s4"></span>
+            </div>
+            <div class="cake-tier-bottom">
+              <span class="cake-ribbon"></span>
+            </div>
+            <div class="cake-plate"></div>
+          </div>
+        </div>
+
+        <button id="blow-all-btn" class="primary-btn" type="button">
+          Blow Out Candles 🕯️
+        </button>
+      </div>
+    </section>
+
+    <!-- Interactive Flip Cards -->
+    <section class="cards-section reveal" id="cards-section">
+      <div class="section-header">
+        <p class="section-tag">A Few Little Notes</p>
+        <h3 class="section-title">Reasons today deserves confetti</h3>
+        <p class="section-subtitle">Tap each card to turn it over</p>
+      </div>
+
+      <div class="cards-grid" id="cards-grid">
+        <!-- Populated from config.js -->
+      </div>
+    </section>
+
+    <!-- Heartfelt Letter -->
+    <section class="letter-section reveal" id="letter-section">
+      <article class="letter-card">
+        <div class="letter-ornament">✦</div>
+        <p class="letter-greeting">Dear <span data-recipient>Sutapa</span>,</p>
+        <div class="letter-body" id="letter-body">
+          <!-- Populated from config.js -->
+        </div>
+        <div class="letter-signoff">
+          <p class="signoff-label">Warmest birthday wishes,</p>
+          <p class="signoff-name" id="sender-name"></p>
+        </div>
+      </article>
+    </section>
+
+    <!-- Playful Interactive Ending -->
+    <section class="reaction-section reveal" id="reaction-section">
+      <div class="glass-panel reaction-panel">
+        <p class="section-tag">Birthday Check-in</p>
+        <h3 class="section-title">How did this surprise land?</h3>
+        <p class="section-subtitle">Tap one to add a little extra sparkle</p>
+
+        <div class="reaction-buttons" id="reaction-buttons">
+          <button class="reaction-btn" type="button" data-reaction="Made me smile 😊">
+            Made me smile 😊
+          </button>
+          <button class="reaction-btn" type="button" data-reaction="Wish is locked in 🕯️">
+            Wish is locked in 🕯️
+          </button>
+          <button class="reaction-btn" type="button" data-reaction="Okay, this was adorable ✨">
+            Okay, this was adorable ✨
+          </button>
+        </div>
+
+        <p id="reaction-feedback" class="reaction-feedback" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Made with thought &amp; stardust for <span data-recipient>Sutapa</span> ✨</p>
+    </footer>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
