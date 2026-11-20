@@ -21,7 +21,7 @@ window.BIRTHDAY_CONFIG = {
 
   // OPTION 2 (Email alert via Web3Forms — Free at https://web3forms.com):
   // Paste your Web3Forms Access Key to receive an email when she visits.
-  web3formsAccessKey: "",
+  web3formsAccessKey: "7ec575e4-cfe4-4393-ae87-f4c32046e7f0",
 
   // OPTION 3 (Discord / Slack / Google Apps Script Webhook URL):
   // Paste a Discord webhook URL (or custom JSON webhook) if you prefer alerts there.
